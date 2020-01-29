@@ -1,4 +1,5 @@
 import *as React from 'react';
+
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +13,10 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+
 import pencil from "../../assets/images/pencil.png";
 
 const useStyles = makeStyles((theme: Theme) => 
@@ -19,20 +24,38 @@ const useStyles = makeStyles((theme: Theme) =>
     toolBar: {
       backgroundColor: "#E59500",
     },
-    menuButton: {
-      color: 'white',
-    },
-    title: {
-      color: 'white',
-    },
-    item: {
+    whiteText:{
       color: 'white',
     },
     background: {
-        backgroundImage: `url(${pencil})`,
-        backgroundSize: 'cover',
-        width: '100vw',
-        height: '100vh',
+      backgroundImage: `url(${pencil})`,
+      backgroundSize: 'cover',
+      width: '100vw',
+      height: '100vh',
+    },
+    typography: {
+      color: "white",
+      position: 'relative',
+      [theme.breakpoints.down('sm')]: {
+        width: 300,
+        top: 160,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 630,
+        top: 250,
+      },
+      textShadow: '1px 1px 2px black',
+    },
+    paper: {
+      position: 'relative',
+      [theme.breakpoints.down('sm')]: {
+        width: 300,
+        top: 180,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 600,
+        top: 270,
+      },
     },
   })
 )
@@ -53,22 +76,21 @@ export default function Header() {
 
   return (
     <div>
-      <Grid container >
         <Grid item xs={12}>
           <AppBar position="static">
             <Toolbar className={classes.toolBar}>
               <Grid container alignItems="baseline">
                 <Grid item justify="flex-start">
-                  <Typography variant="h6" className={classes.title}>
+                  <Typography variant="h6" className={classes.whiteText}>
                   ふりーでぃー！
                   </Typography>
                 </Grid>
                 <Grid item justify="flex-start">
                   <Hidden smDown>
-                    <Button className={classes.item}>ご利用について</Button>
-                    <Button className={classes.item}>よくあるご質問</Button>
-                    <Button className={classes.item}>お問い合わせ</Button>
-                    <Button className={classes.item}>リクエスト</Button>
+                    <Button className={classes.whiteText}>ご利用について</Button>
+                    <Button className={classes.whiteText}>よくあるご質問</Button>
+                    <Button className={classes.whiteText}>お問い合わせ</Button>
+                    <Button className={classes.whiteText}>リクエスト</Button>
                   </Hidden>
                 </Grid>
               </Grid>
@@ -76,7 +98,7 @@ export default function Header() {
                   <Hidden mdUp>
                     <IconButton 
                     edge="start" 
-                    className={classes.menuButton} 
+                    className={classes.whiteText} 
                     aria-label="menu"
                     onClick={handleDrawerOpen}
                     >
@@ -85,7 +107,6 @@ export default function Header() {
                   </Hidden>
                 </Grid>
             </Toolbar>
-            
             <Drawer anchor="right" open={open} onClose={handleDrawerClose}>
             <List>
               <ListItem button>
@@ -104,8 +125,23 @@ export default function Header() {
             </Drawer>
           </AppBar>
         </Grid>
-      </Grid>
-      
+        <Grid 
+        container 
+        className={classes.background}
+        justify="center"
+        >
+          <Grid item >
+            <Typography variant="h2" className={classes.typography}>
+              無料かわいい3Dモデル
+            </Typography>
+            <Paper component="form" className={classes.paper}>
+              <IconButton type="submit">
+                <SearchIcon />
+              </IconButton>
+              <InputBase placeholder="かわいいモデルを検索" />
+            </Paper>
+          </Grid>
+        </Grid>
     </div>
   );
 }
