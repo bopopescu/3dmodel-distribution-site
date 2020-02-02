@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     typography: {
       color: "white",
+      textShadow: '1px 1px 2px black',
       position: 'relative',
       [theme.breakpoints.down('sm')]: {
         width: 300,
@@ -44,7 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
         width: 630,
         top: 250,
       },
-      textShadow: '1px 1px 2px black',
     },
     paper: {
       position: 'relative',
@@ -76,7 +76,7 @@ export default function Header() {
 
   return (
     <div>
-        <Grid item xs={12}>
+      <Grid item xs={12}>
           <AppBar position="static">
             <Toolbar className={classes.toolBar}>
               <Grid container alignItems="baseline">
