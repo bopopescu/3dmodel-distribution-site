@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import LandingPage from "./views/landingPage/landingPage";
+import TopPage from "./views/topPage/TopPage";
 
 const rootElement = document.getElementById("root");
-render(<LandingPage />, rootElement);
+render(<TopPage />, rootElement);
