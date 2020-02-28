@@ -1,5 +1,5 @@
-import *as React from 'react';
-
+import React, {FC, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,16 +16,16 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
-import pencil from "../../assets/images/pencil.png";
+import pencil from "../assets/images/pencil.png";
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     title: {
       [theme.breakpoints.down('sm')]: {
-       flexGrow: 1,
+        flexGrow: 1,
       },
       color: 'white',
     },
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
     background: {
       backgroundImage: `url(${pencil})`,
       backgroundSize: 'cover',
-      height: '120vh',
+      height: '100vh',
     },
     typography: {
       color: "white",
@@ -49,19 +49,22 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     paper: {
       position: 'relative',
-      margin: "0 auto",
+      marginLeft: "auto",
+      marginRight: "auto",
       top: "33%",
       width: "45%",
-      
     },
+    inputBase: {
+      width: "90%",
+    }
   })
 )
 
-export default function Header() {
+const Header: FC = () => {
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const [keyword, setKeyword] = useState("");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -70,6 +73,14 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const handleSubmit = () => {
+    history.push(keyword);
+  }
+  
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(event.target.value);
+  }
   
   const headerMenu = () => {
     return(
@@ -127,17 +138,20 @@ export default function Header() {
         <Typography variant="h2" className={classes.typography}>
           無料かわいい3Dモデル
         </Typography>
-        <Paper component="form" className={classes.paper}>
+        <Paper component="form" onSubmit={handleSubmit} className={classes.paper}>
           <IconButton type="submit">
             <SearchIcon />
           </IconButton>
-          <InputBase placeholder="かわいいモデルを検索" />
+          <InputBase 
+          placeholder="かわいいモデルを検索" 
+          onChange={handleChange} 
+          className={classes.inputBase}
+          />
         </Paper>
       </div>
     )
   }
   
-
   return (
     <div className={classes.root}>
       {headerMenu()}
@@ -145,3 +159,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default Header;
