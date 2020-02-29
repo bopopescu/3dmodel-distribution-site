@@ -12,8 +12,6 @@ const useStyles = makeStyles(() =>
       display: "flex",
       flexWrap: "wrap",
       width: "80%",
-    },
-    tile:{
       textAlign: "center",
     },
     tileImage: {
@@ -35,7 +33,7 @@ const ResultPage: FC = () => {
     return(
       <div className={classes.root}>
         {data.map((tile) => (
-          <div className={classes.tile}>
+          <div>
             <Button 
               onClick={() =>history.push("3d-model/" + tile.title)}
             >
