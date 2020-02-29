@@ -45,7 +45,6 @@ const TopMain: FC = () => {
     
     snapShot.docs.map(doc => {
       temporaryData.push(doc.data());
-      console.log(doc.data());
     })
     
     setData(temporaryData as TileDate[]);

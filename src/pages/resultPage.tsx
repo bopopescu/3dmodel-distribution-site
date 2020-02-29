@@ -1,9 +1,9 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {useHistory, useParams} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 
-import {getData} from "../functions/functions";
+import firebase from '../firebase';
 import {TileDate} from "../types/types";
 
 const useStyles = makeStyles(() =>
@@ -27,9 +27,26 @@ const ResultPage: FC = () => {
   const classes = useStyles();
   const [data, setData] = useState<TileDate[]>([]);
   
-  const displayImage = () => {
-    getData(setData, keyword);
+  const getData = async (searchWord: string | undefined) => {
+    const db = firebase.firestore();
+    const tileDataRef = db.collection("tileData");
+    const searchedData = tileDataRef.where("keyword", "array-contains", searchWord);
+    const temporaryData: object[] = [];
     
+    const snapShot = await searchedData.get();
+    
+    snapShot.docs.map(doc => {
+      temporaryData.push(doc.data());
+    })
+    
+    setData(temporaryData as TileDate[]);
+  }
+  
+  useEffect(() => {
+     getData(keyword);
+   }, []);
+  
+  const displayImage = () => {
     return(
       <div className={classes.root}>
         {data.map((tile) => (
