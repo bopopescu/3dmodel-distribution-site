@@ -52,7 +52,7 @@ const ResultPage: FC = () => {
         {data.map((tile) => (
           <div>
             <Button 
-              onClick={() =>history.push("3d-model/" + tile.title)}
+              onClick={() =>history.push("download/" + tile.title)}
             >
               <img className={classes.tileImage} src={tile.image} alt={tile.title} />
             </Button>
