@@ -1,13 +1,16 @@
 import React, {FC} from "react";
-import Header from "../components/header";
-import TopMain from "../components/topMain";
-import Footer from "../components/footer";
-import ResultPage from "./resultPage";
 import {
   BrowserRouter as Router, 
   Switch, 
   Route, 
 } from "react-router-dom";
+
+import Footer from "../components/footer";
+import Header from "../components/header";
+import DownloadPage from "./downloadPage";
+import ResultPage from "./resultPage";
+import TopMain from "../components/topMain";
+
 
 const TopPage: FC = () => {
   return (
@@ -21,8 +24,8 @@ const TopPage: FC = () => {
         <Route path="/:keyword" exact>
           <ResultPage />
         </Route>
-        <Route path="/3d-model/:keyword" exact>
-          <h2>いい感じ！</h2>
+        <Route path="/download/:keyword" exact>
+          <DownloadPage />
         </Route>
       </Switch>
     </Router>
