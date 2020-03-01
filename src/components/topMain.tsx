@@ -20,7 +20,7 @@ const useStyles = makeStyles(() =>
       display: "flex",
       flexWrap: "nowrap",
       width: "80%",
-      
+      textAlign: "center",
     },
     tileImage: {
       height: "180px",
@@ -58,16 +58,18 @@ const TopMain: FC = () => {
     return (
       <div className={classes.root}>
         <h2 className={classes.category}>おすすめ</h2>
-        {data.map(tile => (
-          <div>
-            <Button 
-              onClick={() =>history.push("3d-model/" + tile.title)}
-            >
-              <img className={classes.tileImage} src={tile.image} alt={tile.title} />
-            </Button>
-          　<h3>{tile.title}</h3>
-          </div>
-      　))}
+        <div className={classes.tile}>
+          {data.map(tile => (
+            <div>
+              <Button 
+                onClick={() =>history.push("3d-model/" + tile.title)}
+              >
+                <img className={classes.tileImage} src={tile.image} alt={tile.title} />
+              </Button>
+          　   <h3>{tile.title}</h3>
+            </div>
+      　  ))}
+      　</div>
       </div>
     )
   }
