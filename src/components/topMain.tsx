@@ -48,6 +48,7 @@ const TopMain: FC = () => {
     })
     
     setData(temporaryData as TileDate[]);
+    
   }
   
   useEffect(() => {

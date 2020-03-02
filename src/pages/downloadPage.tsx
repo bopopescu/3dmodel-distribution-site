@@ -1,8 +1,68 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
+import {useParams} from 'react-router-dom';
+import {createStyles, makeStyles} from '@material-ui/core/styles';
+
+import firebase from '../firebase';
+import {TileDate} from "../types/types";
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      display: "flex",
+      flexWrap: "wrap",
+      width: "80%",
+      textAlign: "center",
+    },
+    tileImage: {
+      height: "218px",
+      width: "218px",
+    },
+  }),
+);
 
 const DownloadPage: FC = () => {
+    const { keyword } = useParams();
+    const classes = useStyles();
+    const [data, setData] = useState<TileDate[]>([]);
+    
+    const getData = async (searchWord: string | undefined) => {
+      const db = firebase.firestore();
+      const tileDataRef = db.collection("tileData");
+      const searchedData = tileDataRef.where("keyword", "array-contains", searchWord);
+      const temporaryData: object[] = [];
+    
+      const snapShot = await searchedData.get();
+    
+      snapShot.docs.map(doc => {
+        temporaryData.push(doc.data());
+      })
+    
+      setData(temporaryData as TileDate[]);
+      
+    }
+    
+    useEffect(() => {
+     getData(keyword);
+    }, []);
+    
+    const displayImage = () => {
+      return(
+        <div className={classes.root}>
+          {data.map((tile) => (
+            <div>
+              <img className={classes.tileImage} src={tile.image} alt={tile.title} />
+              <h3>{tile.title}</h3>
+            </div>
+          ))}
+        </div>
+      )
+  }
+    
     return(
-        <h2>うまくできたー！</h2>
+        <div>
+          <h2>{keyword}</h2>
+          {displayImage()}
+        </div>
     )
 }
 
