@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -31,9 +31,10 @@ const useStyles = makeStyles(() =>
 
 const DownloadPage: FC = () => {
     const { keyword } = useParams();
-    const history = useHistory();
     const classes = useStyles();
     const [data, setData] = useState<TileDate[]>([]);
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    
     
     const getData = async (searchWord: string | undefined) => {
       const db = firebase.firestore();
@@ -48,7 +49,6 @@ const DownloadPage: FC = () => {
       })
     
       setData(temporaryData as TileDate[]);
-      
     }
     
     useEffect(() => {
@@ -67,27 +67,14 @@ const DownloadPage: FC = () => {
       )
     }
     
-    const download = () => {
-      const storage = firebase.storage();
-      const gsReference = storage.refFromURL("gs://freed-44dd6.appspot.com/3dModels/キャラクター/男/男.zip");
-      
-      gsReference.getDownloadURL().then(function(url){
-        
-        
-        console.log(url);
-        
-      })
-      
-    }
-    
-    
     
     const clickDownloadButton = () => {
-      download();
+      
     }
   
     
     const downloadButton = () => {
+      console.log(isDisabled);
       return(
         <div className={classes.root}>
           {data.map((tile) => (
@@ -96,10 +83,11 @@ const DownloadPage: FC = () => {
               variant="contained" 
               startIcon={<GetAppIcon className={classes.downloadIcon} />}
               href={tile.downloadUrl}
+              onClick={() => { setIsDisabled(true)}}
+              disabled={isDisabled}
             >
               {"無料ダウンロード"}
             </Button>
-            
           ))}
         </div>
       )
