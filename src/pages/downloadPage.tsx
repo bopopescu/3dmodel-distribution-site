@@ -67,14 +67,7 @@ const DownloadPage: FC = () => {
       )
     }
     
-    
-    const clickDownloadButton = () => {
-      
-    }
-  
-    
     const downloadButton = () => {
-      console.log(isDisabled);
       return(
         <div className={classes.root}>
           {data.map((tile) => (
@@ -92,15 +85,13 @@ const DownloadPage: FC = () => {
         </div>
       )
     }
-  
-  
     
     return(
-        <div>
-          <h2>{keyword}</h2>
-          {displayImage()}
-          {downloadButton()}
-        </div>
+      <div>
+        <h2>{keyword}</h2>
+        {displayImage()}
+        {downloadButton()}
+      </div>
     )
 }
 
