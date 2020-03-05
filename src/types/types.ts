@@ -1,5 +1,6 @@
 export type TileDate = {
-  description:string;
+  description: string;
+  downloadUrl: string;
   image: string;
   keyword: string[];
   title: string;
