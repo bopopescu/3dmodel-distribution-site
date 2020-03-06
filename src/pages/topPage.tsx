@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 
 import Footer from "../components/footer";
-import TopHeader from "../components/topHeader";
+import TopHeader from "../components/topPage/topHeader";
+import TopMain from "../components/topPage/topMain";
 import DownloadPage from "./downloadPage";
 import ResultPage from "./resultPage";
-import TopMain from "../components/topMain";
 
 
 const TopPage: FC = () => {

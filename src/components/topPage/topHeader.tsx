@@ -14,9 +14,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
-    root: {
-      flexGrow: 1
-    },
     title: {
       [theme.breakpoints.down('sm')]: {
         flexGrow: 1,
@@ -44,38 +41,7 @@ const TopHeader: FC = () => {
     setOpen(false);
   };
   
-  
-  
-  const headerMenu = () => {
-    return(
-      <AppBar position="static">
-        <Toolbar className={classes.toolBar}>
-          <Typography variant="h6" className={classes.title}>
-            ふりーでぃー！
-          </Typography>
-          <Hidden smDown>
-            <Button className={classes.text}>ご利用について</Button>
-            <Button className={classes.text}>よくあるご質問</Button>
-            <Button className={classes.text}>お問い合わせ</Button>
-            <Button className={classes.text}>リクエスト</Button>
-          </Hidden>
-          <Hidden mdUp>
-            <IconButton 
-            edge="start" 
-            className={classes.text} 
-            aria-label="menu"
-            onClick={handleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-        </Toolbar>
-        {drawer()}
-      </AppBar>
-    )
-  }
-  
-  const drawer = () => {
+  const MenuDrawer = () => {
     return(
       <Drawer anchor="right" open={open} onClose={handleDrawerClose}>
         <List>
@@ -96,12 +62,31 @@ const TopHeader: FC = () => {
     )
   }
   
-  
-  
   return (
-    <div className={classes.root}>
-      {headerMenu()}
-    </div>
+    <AppBar position="static">
+      <Toolbar className={classes.toolBar}>
+        <Typography variant="h6" className={classes.title}>
+          ふりーでぃー！
+        </Typography>
+        <Hidden smDown>
+          <Button className={classes.text}>ご利用について</Button>
+          <Button className={classes.text}>よくあるご質問</Button>
+          <Button className={classes.text}>お問い合わせ</Button>
+          <Button className={classes.text}>リクエスト</Button>
+        </Hidden>
+        <Hidden mdUp>
+          <IconButton 
+            edge="start" 
+            className={classes.text} 
+            aria-label="menu"
+            onClick={handleDrawerOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+      </Toolbar>
+      {MenuDrawer()}
+     </AppBar>
   );
 }
 

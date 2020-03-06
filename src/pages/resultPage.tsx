@@ -5,6 +5,7 @@ import {createStyles, makeStyles} from '@material-ui/core/styles';
 
 import firebase from '../firebase';
 import {TileDate} from "../types/types";
+import ResultHeader from "../components/resutlPage/resutlHeader"
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -65,6 +66,7 @@ const ResultPage: FC = () => {
   
   return(
     <div>
+      <ResultHeader />
       {displayImage()}
     </div>
   )

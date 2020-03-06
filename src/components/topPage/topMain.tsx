@@ -8,10 +8,10 @@ import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 
-import pencil from "../assets/images/pencil.png";
+import pencil from "../../assets/images/pencil.png";
 
-import firebase from '../firebase';
-import {TileDate} from "../types/types";
+import firebase from '../../firebase';
+import {TileDate} from "../../types/types";
 
 const useStyles = makeStyles(() =>
   createStyles({
