@@ -13,6 +13,7 @@ const useStyles = makeStyles(() =>
       flexWrap: "wrap",
       width: "80%",
       textAlign: "center",
+      marginTop: "2%",
     },
     tileImage: {
       height: "218px",
@@ -51,13 +52,13 @@ const ResultImageList: FC = () => {
     <div className={classes.root}>
       {data.map((tile) => (
         <div>
-            <Button 
-              onClick={() =>history.push("download/" + tile.title)}
-            >
-              <img className={classes.tileImage} src={tile.image} alt={tile.title} />
-            </Button>
-            <h3>{tile.title}</h3>
-          </div>
+          <Button 
+            onClick={() =>history.push("download/" + tile.title)}
+          >
+            <img className={classes.tileImage} src={tile.image} alt={tile.title} />
+          </Button>
+          <h3>{tile.title}</h3>
+         </div>
        ))}
      </div>
   )
