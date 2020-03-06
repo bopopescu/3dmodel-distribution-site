@@ -1,5 +1,4 @@
 import React, {FC, useState} from 'react';
-import {useHistory} from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,11 +11,6 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-
-import pencil from "../assets/images/pencil.png";
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -35,36 +29,12 @@ const useStyles = makeStyles((theme: Theme) =>
     text:{
       color: 'white',
     },
-    background: {
-      backgroundImage: `url(${pencil})`,
-      backgroundSize: 'cover',
-      height: '100vh',
-    },
-    typography: {
-      color: "white",
-      textShadow: '1px 1px 2px black',
-      position: 'relative',
-      textAlign: "center",
-      top: "30%"
-    },
-    paper: {
-      position: 'relative',
-      marginLeft: "auto",
-      marginRight: "auto",
-      top: "33%",
-      width: "45%",
-    },
-    inputBase: {
-      width: "90%",
-    }
   })
 )
 
-const Header: FC = () => {
+const TopHeader: FC = () => {
   const classes = useStyles();
-  const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [keyword, setKeyword] = useState("");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -74,13 +44,7 @@ const Header: FC = () => {
     setOpen(false);
   };
   
-  const handleSubmit = () => {
-    history.push(keyword);
-  }
   
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(event.target.value);
-  }
   
   const headerMenu = () => {
     return(
@@ -132,32 +96,13 @@ const Header: FC = () => {
     )
   }
   
-  const background = () => {
-    return(
-      <div className={classes.background}>
-        <Typography variant="h2" className={classes.typography}>
-          無料かわいい3Dモデル
-        </Typography>
-        <Paper component="form" onSubmit={handleSubmit} className={classes.paper}>
-          <IconButton type="submit">
-            <SearchIcon />
-          </IconButton>
-          <InputBase 
-          placeholder="かわいいモデルを検索" 
-          onChange={handleChange} 
-          className={classes.inputBase}
-          />
-        </Paper>
-      </div>
-    )
-  }
+  
   
   return (
     <div className={classes.root}>
       {headerMenu()}
-      {background()}
     </div>
   );
 }
 
-export default Header;
+export default TopHeader;

@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import Footer from "../components/footer";
-import Header from "../components/header";
+import TopHeader from "../components/topHeader";
 import DownloadPage from "./downloadPage";
 import ResultPage from "./resultPage";
 import TopMain from "../components/topMain";
@@ -17,7 +17,7 @@ const TopPage: FC = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Header />
+          <TopHeader />
           <TopMain />
           <Footer />
         </Route>

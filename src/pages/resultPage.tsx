@@ -65,7 +65,6 @@ const ResultPage: FC = () => {
   
   return(
     <div>
-      <h2>検索結果は{keyword}さんだよ!</h2>
       {displayImage()}
     </div>
   )
