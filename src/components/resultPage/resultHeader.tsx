@@ -9,6 +9,7 @@ import HeaderSearch from "../../fragments/headerSearch";
 const useStyles = makeStyles(() => 
   createStyles({
     toolBar: {
+      display: "flex",
       backgroundColor: "#E59500",
     },
   })

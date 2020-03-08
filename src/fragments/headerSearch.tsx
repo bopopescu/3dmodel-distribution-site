@@ -10,19 +10,11 @@ const useStyles = makeStyles(() =>
   createStyles({
     paper: {
       display: "flex",
-      position: 'relative',
-      marginLeft: "auto",
-      marginRight: "auto",
-      top: "33%",
       width: "30%",
+      marginLeft: "5%",
     },
     inputBase: {
       width: "80%",
-    },
-    category: {
-      color: "#E59500",
-      textAlign: "center",
-      margin: "0 auto",
     },
   }),
 );
