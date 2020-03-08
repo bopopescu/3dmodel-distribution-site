@@ -11,7 +11,7 @@ const useStyles = makeStyles(() =>
     paper: {
       display: "flex",
       width: "30%",
-      marginLeft: "5%",
+      marginLeft: "2%",
     },
     inputBase: {
       width: "80%",

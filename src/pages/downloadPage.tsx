@@ -5,19 +5,18 @@ import Button from '@material-ui/core/Button';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import firebase from '../firebase';
+import ResultHeader from "../components/resultPage/resultHeader"
 import {TileDate} from "../types/types";
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      display: "flex",
-      flexWrap: "wrap",
-      width: "80%",
+    main: {
       textAlign: "center",
+      marginTop: "5%",
     },
     tileImage: {
-      height: "218px",
-      width: "218px",
+      height: "436px",
+      width: "436px",
     },
     downloadButton: {
       color: "white",
@@ -57,7 +56,7 @@ const DownloadPage: FC = () => {
     
     const displayImage = () => {
       return(
-        <div className={classes.root}>
+        <div>
           {data.map((tile) => (
             <div>
               <img className={classes.tileImage} src={tile.image} alt={tile.title} />
@@ -69,7 +68,7 @@ const DownloadPage: FC = () => {
     
     const downloadButton = () => {
       return(
-        <div className={classes.root}>
+        <div>
           {data.map((tile) => (
             <Button 
               className={classes.downloadButton}
@@ -88,9 +87,12 @@ const DownloadPage: FC = () => {
     
     return(
       <div>
-        <h2>{keyword}</h2>
-        {displayImage()}
-        {downloadButton()}
+        <ResultHeader />
+        <div className={classes.main}>
+          <h2>{keyword}</h2>
+          {displayImage()}
+          {downloadButton()}
+        </div>
       </div>
     )
 }
