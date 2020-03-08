@@ -2,18 +2,14 @@ import React, {FC} from 'react';
 import { createStyles, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+import Title from "../../fragments/title";
+import HeaderSearch from "../../fragments/headerSearch";
 
 const useStyles = makeStyles(() => 
   createStyles({
-    title: {
-      color: 'white',
-    },
     toolBar: {
       backgroundColor: "#E59500",
-    },
-    text:{
-      color: 'white',
     },
   })
 )
@@ -24,9 +20,8 @@ const ResultHeader: FC = () => {
     return(
       <AppBar position="static">
         <Toolbar className={classes.toolBar}>
-          <Typography variant="h6" className={classes.title} >
-            ふりーでぃー！
-          </Typography>
+          <Title />
+          <HeaderSearch />
         </Toolbar>
       </AppBar>
     )

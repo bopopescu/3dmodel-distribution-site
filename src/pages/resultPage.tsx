@@ -1,12 +1,9 @@
 import React, {FC} from "react";
 
-import ResultImageList from "../components/resutlPage/resutlImageList"
-import ResultHeader from "../components/resutlPage/resutlHeader"
-
+import ResultImageList from "../components/resultPage/resultImageList"
+import ResultHeader from "../components/resultPage/resultHeader"
 
 const ResultPage: FC = () => {
-  
-  
   return(
     <div>
       <ResultHeader />

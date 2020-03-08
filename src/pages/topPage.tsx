@@ -11,7 +11,6 @@ import TopMain from "../components/topPage/topMain";
 import DownloadPage from "./downloadPage";
 import ResultPage from "./resultPage";
 
-
 const TopPage: FC = () => {
   return (
     <Router>
