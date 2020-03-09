@@ -26,7 +26,7 @@ const HeaderSearch:FC = () => {
   const [keyword, setKeyword] = useState("");
     
   const handleSubmit = () => {
-    history.push(keyword);
+    history.push("/search/" + keyword);
   }
   
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

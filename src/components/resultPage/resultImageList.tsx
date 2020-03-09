@@ -53,7 +53,7 @@ const ResultImageList: FC = () => {
       {data.map((tile) => (
         <div>
           <Button 
-            onClick={() =>history.push("download/" + tile.title)}
+            onClick={() =>history.push("/download/" + tile.title)}
           >
             <img className={classes.tileImage} src={tile.image} alt={tile.title} />
           </Button>

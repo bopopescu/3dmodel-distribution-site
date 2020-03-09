@@ -87,7 +87,7 @@ const TopMain: FC = () => {
    }, []);
    
    const handleSubmit = () => {
-     history.push(keyword);
+     history.push("/search/" + keyword);
    }
   
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,7 +122,7 @@ const TopMain: FC = () => {
           {data.map(tile => (
             <div>
               <Button 
-                onClick={() =>history.push("download/" + tile.title)}
+                onClick={() =>history.push("/download/" + tile.title)}
               >
                 <img className={classes.tileImage} src={tile.image} alt={tile.title} />
               </Button>
