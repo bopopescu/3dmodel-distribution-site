@@ -1,5 +1,7 @@
 import React, {FC} from 'react';
+import {useHistory} from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => 
@@ -12,11 +14,16 @@ const useStyles = makeStyles(() =>
 
 const Title:FC = () => {
   const classes = useStyles();
+  const history = useHistory();
     
   return(
-    <Typography variant="h6" className={classes.title}>
+    <Button
+     onClick={() =>history.push("/")}
+    >
+      <Typography variant="h6" className={classes.title}>
       ふりーでぃー！
-    </Typography>
+      </Typography>
+    </Button>
   )
 }
 
