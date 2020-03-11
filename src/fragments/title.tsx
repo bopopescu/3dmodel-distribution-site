@@ -21,7 +21,7 @@ const Title:FC = () => {
      onClick={() =>history.push("/")}
     >
       <Typography variant="h6" className={classes.title}>
-      ふりーでぃー！
+        3Dこれくしょん
       </Typography>
     </Button>
   )

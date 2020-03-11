@@ -17,13 +17,15 @@ const TopPage: FC = () => {
         <Route exact path="/">
           <TopHeader />
           <TopMain />
-          
         </Route>
         <Route path="/search/:keyword" exact>
           <ResultPage />
         </Route>
         <Route path="/download/:keyword" exact>
           <DownloadPage />
+        </Route>
+        <Route>
+          存在しません
         </Route>
       </Switch>
     </Router>
