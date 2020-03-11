@@ -24,9 +24,6 @@ const TopPage: FC = () => {
         <Route path="/download/:keyword" exact>
           <DownloadPage />
         </Route>
-        <Route>
-          存在しません
-        </Route>
       </Switch>
     </Router>
   );
